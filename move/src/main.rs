@@ -8,18 +8,17 @@ fn main() {
   take(hello.clone()); // From take(): Hello WasmEdge!
   println!("From main(): {}", hello); // From main(): Hello
 
-  let hello : String = String::from("Hello");
-  borrow(&hello); // From borrow(): Hello WasmEdge!
+  let mut hello : String = String::from("Hello");
+  borrow(&mut hello); // From borrow(): Hello WasmEdge!
   println!("From main(): {}", hello); // From main(): Hello
 }
 
-fn take (mut s: String) {
+fn take(mut s: String) {
   s.push_str(" WasmEdge!");
   println!("From take(): {}", s);
 }
 
-fn borrow (s: &String) {
-  let mut buf = String::from(s);
-  buf.push_str(" WasmEdge!");
-  println!("From borrow(): {}", buf);
+fn borrow(s: &mut String) {
+  s.push_str(" WasmEdge (modified in borrow)!");
+  println!("From borrow(): {}", s);
 }
