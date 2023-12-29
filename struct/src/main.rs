@@ -3,6 +3,7 @@ enum Lang {
   English,
   Spanish,
   Chinese,
+  German,
   Texan,
 }
 
@@ -21,6 +22,8 @@ fn main() {
   let g : Greeting = Greeting { lang: Lang::Texan, message: String::from("Howdy WasmEdge!") };
   v.push(g);
   let g : Greeting = Greeting { lang: Lang::Chinese, message: String::from("WasmEdge 你好!") };
+  v.push(g);
+  let g : Greeting = Greeting { lang: Lang::German, message: String::from("Guten Tag WasmEdge!") };
   v.push(g);
 
   for e in v {
